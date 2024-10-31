@@ -7,10 +7,12 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUpUser } from 'store/actions/auth';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { userData, loading, error } = useSelector((state) => state.auth);
   const [repeatedPasword, setRepeatedPasword] = useState('');
   const [data, setData] = useState({
@@ -30,8 +32,10 @@ const SignUp = () => {
   });
 
   useEffect(() => {
-    console.log({ data, userData, error, loading });
-  }, [data, userData, error, loading]);
+    if (userData?.id && !error && !loading) {
+      navigate('/login');
+    }
+  }, [userData, error, loading, navigate]);
 
   const validateInput = (value) => value.trim().length > 1;
 
@@ -42,7 +46,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="max-w-screen-md mx-auto mt-10 flex flex-col align-center">
+    <div className="bg-lightTheme-lightBlue max-w-screen-md mx-auto mt-10 flex flex-col align-center">
       <InputWithValidation
         label={t('COMMON.name')}
         value={data.name}
@@ -105,7 +109,7 @@ const SignUp = () => {
 
       <InputWithValidation
         label={t('COMMON.insuranceId')}
-        value={data.password}
+        value={data.insuranceId}
         onChange={(e) => setData({ ...data, insuranceId: e.target.value })}
         placeholder={t('LOGIN.enterYour') + ' ' + t('COMMON.insuranceId')}
         validate={validateInput}

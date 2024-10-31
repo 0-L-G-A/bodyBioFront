@@ -1,7 +1,7 @@
-import { REGUEST_METHODS, request } from './core';
+import { BODY_BIO_API_URL, REGUEST_METHODS, request } from './core';
 
 export const signUpUserPostApi = async (data) => {
-  const url = 'http://localhost:3006/users/signUp';
+  const url = BODY_BIO_API_URL + 'users/signUp';
   const req = await request(url, {
     method: REGUEST_METHODS.POST,
     data,
@@ -9,13 +9,21 @@ export const signUpUserPostApi = async (data) => {
   return req;
 };
 
-export const fetchUserApi = async (url) => {
-  // const url = 'http://localhost:3006/users';
+export const loginUserPostApi = async (data) => {
+  const url = BODY_BIO_API_URL + 'users/login';
   const req = await request(url, {
-    method: REGUEST_METHODS.GET,
+    method: REGUEST_METHODS.POST,
+    data,
   });
   return req;
 };
+
+// export const fetchUserApi = async (url) => {
+//   const req = await request(url, {
+//     method: REGUEST_METHODS.GET,
+//   });
+//   return req;
+// };
 
 // get users answer
 // {

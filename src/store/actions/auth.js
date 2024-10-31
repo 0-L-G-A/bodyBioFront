@@ -17,3 +17,23 @@ export const signUpUserFailure = createAction(
     payload: error,
   }),
 );
+
+export const loginUser = createAction('auth/loginUser', (userData) => ({
+  payload: userData,
+}));
+
+export const loginUserSuccess = createAction(
+  'auth/loginUserSuccess',
+  (user) => ({
+    payload: user,
+  }),
+);
+
+export const loginUserFailure = createAction(
+  'auth/loginUserFailure',
+  (error) => ({
+    payload: error,
+  }),
+);
+
+export const logoutUser = createAction('auth/logOutUser');

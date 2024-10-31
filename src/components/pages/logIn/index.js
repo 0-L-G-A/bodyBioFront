@@ -1,27 +1,56 @@
-import { fetchUserApi } from 'api/auth';
 import Button from 'components/commonComponents/button';
 import InputWithValidation from 'components/commonComponents/inputWithValidation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { loginUser } from 'store/actions/auth';
 
 const LogIn = () => {
-  const [url, setUrl] = useState('http://localhost:3006/users');
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { userData, loading, error } = useSelector((state) => state.auth);
+  const [data, setData] = useState({
+    email: '',
+    password: '',
+  });
+
+  useEffect(() => {
+    if (userData?.id && !error && !loading) {
+      navigate('/home');
+    }
+  }, [userData, error, loading, navigate]);
+
+  const validateInput = (value) => value.trim().length > 1;
+
   const handleSubmit = () => {
-    fetchUserApi(url);
+    dispatch(loginUser(data));
   };
 
   return (
-    <div className="max-w-screen-md mx-auto mt-10 flex flex-col align-center">
+    <div className="bg-lightTheme-lightBlue max-w-screen-md mx-auto mt-10 flex flex-col align-center">
       <InputWithValidation
-        label="Url"
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-        placeholder="ur"
-        errorMessage="err"
-        tooltipText="tool"
+        label={t('COMMON.email')}
+        value={data.email}
+        onChange={(e) => setData({ ...data, email: e.target.value })}
+        placeholder={t('LOGIN.enterYour') + ' ' + t('COMMON.email')}
+        validate={validateInput}
+        errorMessage={t('LOGIN.fieldIsRequired')}
+        tooltipText={t('LOGIN.lengthShouldBeLonger') + ' 2'}
       />
 
-      <Button onClick={handleSubmit} type="submit" disabled={false}>
-        "Request"
+      <InputWithValidation
+        label={t('COMMON.password')}
+        value={data.password}
+        onChange={(e) => setData({ ...data, password: e.target.value })}
+        placeholder={t('LOGIN.enterYour') + ' ' + t('COMMON.password')}
+        validate={validateInput}
+        errorMessage={t('LOGIN.fieldIsRequired')}
+        tooltipText={t('LOGIN.lengthShouldBeLonger') + ' 2'}
+      />
+      <Button onClick={handleSubmit} type="submit" disabled={loading}>
+        {t('NAVIGATION.logIn')}
       </Button>
     </div>
   );

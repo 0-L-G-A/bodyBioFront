@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+export const BODY_BIO_API_URL = 'https://mbbioprod.up.railway.app/';
+
 export const REGUEST_METHODS = {
   GET: 'get',
   POST: 'post',

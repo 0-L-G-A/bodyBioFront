@@ -17,7 +17,8 @@ module.exports = {
         },
       },
       boxShadow: {
-        custom: '1px 0 30px black', // Кастомна тінь для тексту
+        custom: '1px 0 15px black', // Кастомна тінь для тексту
+        customSmRD: '2px 2px 8px black',
       },
     },
   },
