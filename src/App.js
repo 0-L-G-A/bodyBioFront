@@ -7,6 +7,7 @@ import NotFound from 'components/pages/404';
 import { Route, Routes } from 'react-router-dom';
 import Navigation from 'components/navigation';
 import { useSelector } from 'react-redux';
+import MyMedicalHistory from 'components/pages/myHistory';
 
 function App() {
   const { userData } = useSelector((state) => state.auth);
@@ -18,6 +19,7 @@ function App() {
           <>
             <Route path="/home" element={<Home />} />
             <Route path="/appointment" element={<Appointment />} />
+            <Route path="/medhis" element={<MyMedicalHistory />} />
           </>
         )}
         {!userData?.id && (

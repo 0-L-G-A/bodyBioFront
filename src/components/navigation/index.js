@@ -35,6 +35,9 @@ export default function Navigation() {
               <Link to="/appointment" className={linkStyle}>
                 {t('NAVIGATION.appointment')}
               </Link>
+              <Link to="/medhis" className={linkStyle}>
+                {t('NAVIGATION.myMedicalHistory')}
+              </Link>
             </>
           )}
         </div>

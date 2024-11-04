@@ -3,7 +3,8 @@
     "signUp": "Sign Up",
     "logIn": "Log In",
     "home": "Home",
-    "appointment": "Appointment"
+    "appointment": "Appointment",
+    "myMedicalHistory": "My medical history"
   },
   "COMMON": {
     "bodyBio": "Body Bio",
