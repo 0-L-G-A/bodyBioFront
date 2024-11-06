@@ -11,7 +11,7 @@ const AppointmentWrapper = ({ appointment }) => {
   useEffect(() => {
     const usersDiagnozesIds = usersDiagnozes.map((d) => d?.childDiagnozeId);
     dispatch(fetchDiagnozesByIds(usersDiagnozesIds));
-  }, []);
+  }, [dispatch, usersDiagnozes]);
 
   return (
     <>
