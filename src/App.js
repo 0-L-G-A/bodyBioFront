@@ -12,7 +12,7 @@ import MyMedicalHistory from 'components/pages/myHistory';
 function App() {
   const { userData } = useSelector((state) => state.auth);
   return (
-    <>
+    <div className="mt-[72px] bg-lightTheme-lightBlue h-screen">
       <Navigation />
       <Routes>
         {userData?.id && (
@@ -31,7 +31,7 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

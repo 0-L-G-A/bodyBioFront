@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { mergeArrayToObject } from 'store/utils/arrToObj';
 
 const loadUserFromLocalStorage = () => {
   try {
@@ -16,6 +17,7 @@ const authSlice = createSlice({
     userData: loadUserFromLocalStorage(),
     loading: false,
     error: null,
+    usersArray: {},
   },
   reducers: {
     signUpUser: (state) => {
@@ -26,6 +28,7 @@ const authSlice = createSlice({
       state.loading = false;
       state.userData = action.payload;
       localStorage.setItem('userData', JSON.stringify(action.payload));
+      state.usersArray = mergeArrayToObject(state.usersArray, action.payload);
     },
     signUpUserFailure: (state, action) => {
       state.loading = false;
@@ -39,6 +42,7 @@ const authSlice = createSlice({
       state.loading = false;
       state.userData = action.payload;
       localStorage.setItem('userData', JSON.stringify(action.payload));
+      state.usersArray = mergeArrayToObject(state.usersArray, [action.payload]);
     },
     loginUserFailure: (state, action) => {
       state.loading = false;
@@ -47,6 +51,42 @@ const authSlice = createSlice({
     logoutUser: (state) => {
       state.userData = null;
       localStorage.removeItem('userData');
+    },
+    fetchUser: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchUserSuccess: (state, action) => {
+      state.loading = false;
+      state.usersArray = mergeArrayToObject(state.usersArray, [action.payload]);
+    },
+    fetchUserFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    updateUser: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    updateUserSuccess: (state, action) => {
+      state.loading = false;
+      // state.usersArray = mergeArrayToObject(state.usersArray, [action.payload]);
+    },
+    updateUserFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    deleteUser: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    deleteUserSuccess: (state, action) => {
+      state.loading = false;
+      // delete state.usersArray[action.payload];
+    },
+    deleteUserFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
     },
   },
 });
@@ -59,5 +99,14 @@ export const {
   loginUserSuccess,
   loginUserFailure,
   logoutUser,
+  fetchUser,
+  fetchUserSuccess,
+  fetchUserFailure,
+  updateUser,
+  updateUserSuccess,
+  updateUserFailure,
+  deleteUser,
+  deleteUserSuccess,
+  deleteUserFailure,
 } = authSlice.actions;
 export default authSlice.reducer;

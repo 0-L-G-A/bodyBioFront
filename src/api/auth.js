@@ -18,12 +18,30 @@ export const loginUserPostApi = async (data) => {
   return req;
 };
 
-// export const fetchUserApi = async (url) => {
-//   const req = await request(url, {
-//     method: REGUEST_METHODS.GET,
-//   });
-//   return req;
-// };
+export const fetchUserApi = async (userId) => {
+  const url = BODY_BIO_API_URL + 'users/' + userId;
+  const req = await request(url, {
+    method: REGUEST_METHODS.GET,
+  });
+  return req;
+};
+
+export const updateUserApi = async (data) => {
+  const url = BODY_BIO_API_URL + 'users/' + data.id;
+  const req = await request(url, {
+    method: REGUEST_METHODS.PUT,
+    data,
+  });
+  return req;
+};
+
+export const deleteUserApi = async (userId) => {
+  const url = BODY_BIO_API_URL + 'users/' + userId;
+  const req = await request(url, {
+    method: REGUEST_METHODS.DELETE,
+  });
+  return req;
+};
 
 // get users answer
 // {
