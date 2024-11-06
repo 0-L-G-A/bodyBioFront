@@ -22,7 +22,6 @@ export const request = async (
     }
 
     if (method === REGUEST_METHODS.GET) {
-      console.log('api', { url, params, method, data });
       response = await axios[method](url, { params });
     }
 

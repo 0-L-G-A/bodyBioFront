@@ -1,22 +1,22 @@
 import {
   fetchAllBodySystemsApi,
   fetchBodySystemApi,
-  createBodySystemApi,
-  updateBodySystemApi,
-  deleteBodySystemApi,
-  fetchDiagnozesApi,
   fetchDiagnozesByIdsApi,
-  createDiagnozeApi,
-  updateDiagnozeApi,
-  deleteDiagnozeApi,
-  fetchAllFindingsApi,
-  fetchFindingsByIdsApi,
-  createFindingApi,
-  deleteFindingApi,
-  fetchAllLabsApi,
-  fetchLabsByIdsApi,
-  createLabApi,
-  deleteLabApi,
+  // createBodySystemApi,
+  // updateBodySystemApi,
+  // deleteBodySystemApi,
+  // fetchDiagnozesApi,
+  // createDiagnozeApi,
+  // updateDiagnozeApi,
+  // deleteDiagnozeApi,
+  // fetchAllFindingsApi,
+  // fetchFindingsByIdsApi,
+  // createFindingApi,
+  // deleteFindingApi,
+  // fetchAllLabsApi,
+  // fetchLabsByIdsApi,
+  // createLabApi,
+  // deleteLabApi,
 } from 'api/catalog';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
@@ -26,54 +26,54 @@ import {
   fetchBodySystem,
   fetchBodySystemSuccess,
   fetchBodySystemFailure,
-  createBodySystem,
-  createBodySystemSuccess,
-  createBodySystemFailure,
-  updateBodySystem,
-  updateBodySystemSuccess,
-  updateBodySystemFailure,
-  deleteBodySystem,
-  deleteBodySystemSuccess,
-  deleteBodySystemFailure,
-  fetchDiagnozes,
-  fetchDiagnozesSuccess,
-  fetchDiagnozesFailure,
   fetchDiagnozesByIds,
   fetchDiagnozesByIdsSuccess,
   fetchDiagnozesByIdsFailure,
+  createBodySystem,
+  // createBodySystemSuccess,
+  // createBodySystemFailure,
+  updateBodySystem,
+  // updateBodySystemSuccess,
+  // updateBodySystemFailure,
+  deleteBodySystem,
+  // deleteBodySystemSuccess,
+  // deleteBodySystemFailure,
+  fetchDiagnozes,
+  // fetchDiagnozesSuccess,
+  // fetchDiagnozesFailure,
   createDiagnoze,
-  createDiagnozeSuccess,
-  createDiagnozeFailure,
+  // createDiagnozeSuccess,
+  // createDiagnozeFailure,
   updateDiagnoze,
-  updateDiagnozeSuccess,
-  updateDiagnozeFailure,
+  // updateDiagnozeSuccess,
+  // updateDiagnozeFailure,
   deleteDiagnoze,
-  deleteDiagnozeSuccess,
-  deleteDiagnozeFailure,
+  // deleteDiagnozeSuccess,
+  // deleteDiagnozeFailure,
   fetchFindings,
-  fetchFindingsSuccess,
-  fetchFindingsFailure,
+  // fetchFindingsSuccess,
+  // fetchFindingsFailure,
   fetchFindingsByIds,
-  fetchFindingsByIdsSuccess,
-  fetchFindingsByIdsFailure,
+  // fetchFindingsByIdsSuccess,
+  // fetchFindingsByIdsFailure,
   createFinding,
-  createFindingSuccess,
-  createFindingFailure,
+  // createFindingSuccess,
+  // createFindingFailure,
   deleteFinding,
-  deleteFindingSuccess,
-  deleteFindingFailure,
+  // deleteFindingSuccess,
+  // deleteFindingFailure,
   fetchLabs,
-  fetchLabsSuccess,
-  fetchLabsFailure,
+  // fetchLabsSuccess,
+  // fetchLabsFailure,
   fetchLabsByIds,
-  fetchLabsByIdsSuccess,
-  fetchLabsByIdsFailure,
+  // fetchLabsByIdsSuccess,
+  // fetchLabsByIdsFailure,
   createLab,
-  createLabSuccess,
-  createLabFailure,
+  // createLabSuccess,
+  // createLabFailure,
   deleteLab,
-  deleteLabSuccess,
-  deleteLabFailure,
+  // deleteLabSuccess,
+  // deleteLabFailure,
 } from 'store/actions/catalog';
 
 function* fetchAllBodySystemsSaga() {
@@ -98,9 +98,7 @@ function* fetchDiagnozesByIdsSaga(action) {
   try {
     const response = yield call(fetchDiagnozesByIdsApi, action.payload);
     yield put(fetchDiagnozesByIdsSuccess(response));
-    console.log('fetchDiagnozesByIdsSaga S', { response });
   } catch (error) {
-    console.log('fetchDiagnozesByIdsSaga F', { error });
     yield put(fetchDiagnozesByIdsFailure(error));
   }
 }
@@ -251,11 +249,11 @@ function* deleteLabSaga(action) {
 export function* watchCatalogSaga() {
   yield takeLatest(fetchBodySystems.type, fetchAllBodySystemsSaga);
   yield takeLatest(fetchBodySystem.type, fetchBodySystemSaga);
+  yield takeLatest(fetchDiagnozesByIds.type, fetchDiagnozesByIdsSaga);
   yield takeLatest(createBodySystem.type, createBodySystemSaga);
   yield takeLatest(updateBodySystem.type, updateBodySystemSaga);
   yield takeLatest(deleteBodySystem.type, deleteBodySystemSaga);
   yield takeLatest(fetchDiagnozes.type, fetchDiagnozesSaga);
-  yield takeLatest(fetchDiagnozesByIds.type, fetchDiagnozesByIdsSaga);
   yield takeLatest(createDiagnoze.type, createDiagnozeSaga);
   yield takeLatest(updateDiagnoze.type, updateDiagnozeSaga);
   yield takeLatest(deleteDiagnoze.type, deleteDiagnozeSaga);
