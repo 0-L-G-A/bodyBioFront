@@ -29,7 +29,7 @@ const LogIn = () => {
   };
 
   return (
-    <div className="bg-lightTheme-lightBlue max-w-screen-md mx-auto mt-10 flex flex-col align-center">
+    <div className="bg-lightTheme-lightBlue max-w-screen-md mx-auto mt-10 flex flex-col align-center pt-2">
       <InputWithValidation
         label={t('COMMON.email')}
         value={data.email}
@@ -38,6 +38,7 @@ const LogIn = () => {
         validate={validateInput}
         errorMessage={t('LOGIN.fieldIsRequired')}
         tooltipText={t('LOGIN.lengthShouldBeLonger') + ' 2'}
+        tooltipPosition="bottom"
       />
 
       <InputWithValidation
