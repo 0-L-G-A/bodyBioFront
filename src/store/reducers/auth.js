@@ -27,6 +27,7 @@ const authSlice = createSlice({
     signUpUserSuccess: (state, action) => {
       state.loading = false;
       state.userData = action.payload;
+      console.log('auth', { action, state });
       localStorage.setItem('userData', JSON.stringify(action.payload));
       state.usersArray = mergeArrayToObject(state.usersArray, action.payload);
     },
@@ -41,6 +42,7 @@ const authSlice = createSlice({
     loginUserSuccess: (state, action) => {
       state.loading = false;
       state.userData = action.payload;
+      console.log('auth', { action, state });
       localStorage.setItem('userData', JSON.stringify(action.payload));
       state.usersArray = mergeArrayToObject(state.usersArray, [action.payload]);
     },
@@ -50,7 +52,9 @@ const authSlice = createSlice({
     },
     logoutUser: (state) => {
       state.userData = null;
+      console.log('auth log out', { state });
       localStorage.removeItem('userData');
+      localStorage.clear();
     },
     fetchUser: (state) => {
       state.loading = true;

@@ -36,7 +36,7 @@ export const loginUserFailure = createAction(
   }),
 );
 
-export const logoutUser = createAction('auth/logOutUser');
+export const logoutUser = createAction('auth/logoutUser');
 
 export const fetchUser = createAction('auth/fetchUser', (userId) => ({
   payload: userId,

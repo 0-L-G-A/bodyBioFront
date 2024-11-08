@@ -6,6 +6,21 @@ import enTranslation from 'locales/en/translation.json';
 import uaTranslation from 'locales/ua/translation.json';
 import esTranslation from 'locales/es/translation.json';
 
+const loadLangFromStorage = () => {
+  try {
+    const userData = localStorage.getItem('userData');
+    const lang = userData ? JSON.parse(userData).language : null;
+    console.log(lang);
+    return lang;
+  } catch (error) {
+    console.error(
+      'Помилка при завантаженні мови користувача з localStorage',
+      error,
+    );
+    return null;
+  }
+};
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -21,8 +36,12 @@ i18n
         translation: esTranslation,
       },
     },
-    fallbackLng: 'en',
+    fallbackLng: () => loadLangFromStorage() || 'ua',
     debug: true,
+    detection: {
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
+    },
     interpolation: {
       escapeValue: false,
     },
