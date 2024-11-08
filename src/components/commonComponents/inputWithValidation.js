@@ -8,6 +8,7 @@ const InputWithValidation = ({
   validate,
   errorMessage,
   tooltipText,
+  tooltipPosition = 'top', // top or bottom
 }) => {
   const [isTooltipVisible, setTooltipVisible] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -43,7 +44,11 @@ const InputWithValidation = ({
             <span className="text-lightTheme-error">?</span>
             {isTooltipVisible && (
               <div
-                className="absolute bottom-full mb-2 w-48 p-2 bg-lightTheme-brightLightBlue border border-lightTheme-darkSeaWave rounded shadow-md z-50"
+                className={`absolute w-48 p-2 bg-lightTheme-brightLightBlue border border-lightTheme-darkSeaWave rounded shadow-md z-50 ${
+                  tooltipPosition === 'top'
+                    ? 'bottom-full mb-2'
+                    : 'top-full mt-2'
+                }`}
                 style={{ zIndex: 100 }}
               >
                 <p className="text-lightTheme-darkSecondaryText text-xs">

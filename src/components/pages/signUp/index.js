@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUpUser } from 'store/actions/auth';
 import { useNavigate } from 'react-router-dom';
+import { LANGUAGES } from 'components/types/lang';
 
 const SignUp = () => {
   const { t } = useTranslation();
@@ -46,7 +47,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="bg-lightTheme-lightBlue max-w-screen-md mx-auto mt-10 flex flex-col align-center">
+    <div className="bg-lightTheme-lightBlue max-w-screen-md mx-auto mt-10 flex flex-col align-center pt-2">
       <InputWithValidation
         label={t('COMMON.name')}
         value={data.name}
@@ -55,6 +56,7 @@ const SignUp = () => {
         validate={validateInput}
         errorMessage={t('LOGIN.fieldIsRequired')}
         tooltipText={t('LOGIN.lengthShouldBeLonger') + ' 2'}
+        tooltipPosition="bottom"
       />
 
       <InputWithValidation
@@ -142,6 +144,15 @@ const SignUp = () => {
         value={data.role}
         options={SEX_TYPES}
         onChange={(e) => setData({ ...data, sex: e.target.value })}
+        validate={validateSelect}
+        errorMessage={t('LOGIN.fieldIsRequired')}
+      />
+
+      <SelectWithValidation
+        label={t('COMMON.language')}
+        value={data.preferedLanguage}
+        options={LANGUAGES}
+        onChange={(e) => setData({ ...data, preferedLanguage: e.target.value })}
         validate={validateSelect}
         errorMessage={t('LOGIN.fieldIsRequired')}
       />

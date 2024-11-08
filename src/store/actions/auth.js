@@ -36,4 +36,58 @@ export const loginUserFailure = createAction(
   }),
 );
 
-export const logoutUser = createAction('auth/logOutUser');
+export const logoutUser = createAction('auth/logoutUser');
+
+export const fetchUser = createAction('auth/fetchUser', (userId) => ({
+  payload: userId,
+}));
+
+export const fetchUserSuccess = createAction(
+  'auth/fetchUserSuccess',
+  (user) => ({
+    payload: user,
+  }),
+);
+
+export const fetchUserFailure = createAction(
+  'auth/fetchUserFailure',
+  (error) => ({
+    payload: error,
+  }),
+);
+
+export const updateUser = createAction('auth/updateUser', (userData) => ({
+  payload: userData,
+}));
+
+export const updateUserSuccess = createAction(
+  'auth/updateUserSuccess',
+  (user) => ({
+    payload: user,
+  }),
+);
+
+export const updateUserFailure = createAction(
+  'auth/updateUserFailure',
+  (error) => ({
+    payload: error,
+  }),
+);
+
+export const deleteUser = createAction('auth/deleteUser', (userId) => ({
+  payload: userId,
+}));
+
+export const deleteUserSuccess = createAction(
+  'auth/deleteUserSuccess',
+  (userId) => ({
+    payload: userId,
+  }),
+);
+
+export const deleteUserFailure = createAction(
+  'auth/deleteUserFailure',
+  (error) => ({
+    payload: error,
+  }),
+);

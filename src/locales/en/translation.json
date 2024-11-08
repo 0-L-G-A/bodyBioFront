@@ -3,7 +3,8 @@
     "signUp": "Sign Up",
     "logIn": "Log In",
     "home": "Home",
-    "appointment": "Appointment"
+    "appointment": "Appointment",
+    "myMedicalHistory": "My medical history"
   },
   "COMMON": {
     "bodyBio": "Body Bio",
@@ -15,7 +16,14 @@
     "insuranceId": "Insurance number",
     "isAlive": "Is Alive",
     "role": "Role",
-    "sex": "Sex"
+    "sex": "Sex",
+    "language": "Language",
+    "edit": "Edit",
+    "save": "Save",
+    "doctors": "Doctors",
+    "trustPersons": "Trust persons",
+    "admins": "Admins",
+    "patients": "Patients"
   },
   "LOGIN": {
     "create": "Create",
