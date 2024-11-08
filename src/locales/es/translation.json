@@ -3,9 +3,34 @@
     "signUp": "лопав",
     "logIn": "",
     "home": "",
-    "appointment": ""
+    "appointment": "",
+    "myMedicalHistory": ""
   },
   "COMMON": {
-    "bodyBio": ""
+    "bodyBio": "",
+    "name": "",
+    "surname": "",
+    "email": "",
+    "password": "",
+    "contactNumber": "",
+    "insuranceId": "",
+    "isAlive": "",
+    "role": "",
+    "sex": "",
+    "language": "",
+    "edit": "",
+    "save": "",
+    "doctors": "",
+    "trustPersons": "",
+    "admins": "",
+    "patients": ""
+  },
+  "LOGIN": {
+    "create": "",
+    "repeat": "",
+    "enterYour": "",
+    "fieldIsRequired": "",
+    "lengthShouldBeLonger": "",
+    "selectYourRole": ""
   }
 }
