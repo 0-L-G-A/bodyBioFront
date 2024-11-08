@@ -7,14 +7,11 @@ import { USER_ROLE_TYPES } from 'components/types/roles';
 import { SEX_TYPES } from 'components/types/sex';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { userData, loading, error } = useSelector((state) => state.auth);
+  const { userData, loading } = useSelector((state) => state.auth);
   const [isEditing, setIsEditing] = useState(false);
 
   const [data, setData] = useState({
