@@ -1,3 +1,4 @@
+import { CATALOG_TYPE } from 'components/types/CatalogType';
 import React from 'react';
 import { FaFileAlt, FaImage } from 'react-icons/fa';
 
@@ -9,10 +10,12 @@ const AppointmentItem = ({ diagnosis, catalogItem }) => {
       <div className="flex justify-between items-center">
         <div>
           <p className="text-lightTheme-darkMainText text-md font-bold">
-            {recordType}
+            {recordType === CATALOG_TYPE.FINDING && 'Симптом'}
+            {recordType === CATALOG_TYPE.DIAGNOZE && 'Діагноз'}
+            {recordType === CATALOG_TYPE.LAB && 'Дослідження'}
           </p>
           <p className="text-lightTheme-darkSecondaryText text-sm">
-            <strong>Parent ID:</strong> {catalogItem?.nameKey}
+            <strong>Назва:</strong> {catalogItem?.name}
           </p>
         </div>
 

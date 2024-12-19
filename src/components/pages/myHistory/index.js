@@ -37,12 +37,12 @@ const MyMedicalHistory = () => {
           disabled={selectedRecordType === 'appointment'}
           className="min-w-[150px] px-4 py-2 border border-lightTheme-darkSeaWave rounded-md focus:outline-none text-lightTheme-darkSecondaryText"
         >
-          <option value="">Select Body System</option>
+          <option value="">Вибрати систему тіла</option>
           <option value="06297b53-5b31-4505-8843-5f7fcd50046a">
-            Respiratory
+            Респіраторна
           </option>
           <option value="b53e2df3-00c6-40ab-91b5-8fdb16d7c70b">
-            Cardiovascular
+            Серцево-судинна
           </option>
         </select>
 
@@ -51,10 +51,10 @@ const MyMedicalHistory = () => {
           onChange={handleRecordTypeChange}
           className="min-w-[150px] px-4 py-2 border border-lightTheme-darkSeaWave rounded-md focus:outline-none text-lightTheme-darkSecondaryText"
         >
-          <option value="appointment">Appointment</option>
-          <option value="diagnoze">Diagnosis</option>
-          <option value="finding">Finding</option>
-          <option value="lab">Laboratory</option>
+          <option value="appointment">Медичні записи</option>
+          <option value="diagnoze">Діагнози</option>
+          <option value="finding">Симптоми</option>
+          <option value="lab">Дослідження</option>
         </select>
       </div>
 

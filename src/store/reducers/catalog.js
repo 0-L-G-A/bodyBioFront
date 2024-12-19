@@ -153,8 +153,8 @@ const catalogSlice = createSlice({
     },
     createDiagnozeSuccess: (state, action) => {
       state.loading = false;
-      // state.diagnozesArray.push(action.payload);
-      // state.diagnozesObj[action.payload.id] = action.payload;
+      state.diagnozesArray.push(action.payload);
+      state.diagnozesObj[action.payload.id] = action.payload;
     },
     createDiagnozeFailure: (state, action) => {
       state.loading = false;
@@ -229,9 +229,9 @@ const catalogSlice = createSlice({
     },
     createFindingSuccess: (state, action) => {
       state.loading = false;
-      // const newFinding = action.payload;
-      // state.findingsArray.push(newFinding);
-      // state.findingsObj[newFinding.id] = newFinding;
+      const newFinding = action.payload;
+      state.findingsArray.push(newFinding);
+      state.findingsObj[newFinding.id] = newFinding;
     },
     createFindingFailure: (state, action) => {
       state.loading = false;
@@ -290,9 +290,9 @@ const catalogSlice = createSlice({
     },
     createLabSuccess: (state, action) => {
       state.loading = false;
-      // const newLab = action.payload;
-      // state.labsArray.push(newLab);
-      // state.labsObj[newLab.id] = newLab;
+      const newLab = action.payload;
+      state.labsArray.push(newLab);
+      state.labsObj[newLab.id] = newLab;
     },
     createLabFailure: (state, action) => {
       state.loading = false;
@@ -304,9 +304,9 @@ const catalogSlice = createSlice({
     },
     deleteLabSuccess: (state, action) => {
       state.loading = false;
-      // const id = action.payload;
+      const id = action.payload;
       // delete state.labsObj[id];
-      // state.labsArray = state.labsArray.filter((lab) => lab.id !== id);
+      state.labsArray = state.labsArray.filter((lab) => lab.id !== id);
     },
     deleteLabFailure: (state, action) => {
       state.loading = false;

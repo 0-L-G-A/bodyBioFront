@@ -15,7 +15,10 @@ root.render(
     <I18nextProvider i18n={i18n}>
       <Provider store={store}>
         <BrowserRouter>
-          <App />
+          <>
+            <div id="modal-root"></div>
+            <App />
+          </>
         </BrowserRouter>
       </Provider>
     </I18nextProvider>

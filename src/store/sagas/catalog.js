@@ -6,17 +6,17 @@ import {
   // updateBodySystemApi,
   // deleteBodySystemApi,
   // fetchDiagnozesApi,
-  // createDiagnozeApi,
+  createDiagnozeApi,
   // updateDiagnozeApi,
   // deleteDiagnozeApi,
   // fetchAllFindingsApi,
   // fetchFindingsByIdsApi,
-  // createFindingApi,
+  createFindingApi,
   // deleteFindingApi,
   // fetchAllLabsApi,
   // fetchLabsByIdsApi,
-  // createLabApi,
-  // deleteLabApi,
+  createLabApi,
+  deleteLabApi,
 } from 'api/catalog';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
@@ -42,8 +42,8 @@ import {
   // fetchDiagnozesSuccess,
   // fetchDiagnozesFailure,
   createDiagnoze,
-  // createDiagnozeSuccess,
-  // createDiagnozeFailure,
+  createDiagnozeSuccess,
+  createDiagnozeFailure,
   updateDiagnoze,
   // updateDiagnozeSuccess,
   // updateDiagnozeFailure,
@@ -57,8 +57,8 @@ import {
   // fetchFindingsByIdsSuccess,
   // fetchFindingsByIdsFailure,
   createFinding,
-  // createFindingSuccess,
-  // createFindingFailure,
+  createFindingSuccess,
+  createFindingFailure,
   deleteFinding,
   // deleteFindingSuccess,
   // deleteFindingFailure,
@@ -69,11 +69,11 @@ import {
   // fetchLabsByIdsSuccess,
   // fetchLabsByIdsFailure,
   createLab,
-  // createLabSuccess,
-  // createLabFailure,
+  createLabSuccess,
+  createLabFailure,
   deleteLab,
-  // deleteLabSuccess,
-  // deleteLabFailure,
+  deleteLabSuccess,
+  deleteLabFailure,
 } from 'store/actions/catalog';
 
 function* fetchAllBodySystemsSaga() {
@@ -144,12 +144,12 @@ function* fetchDiagnozesSaga() {
 }
 
 function* createDiagnozeSaga(action) {
-  // try {
-  //   const response = yield call(createDiagnozeApi, action.payload);
-  //   yield put(createDiagnozeSuccess(response));
-  // } catch (error) {
-  //   yield put(createDiagnozeFailure(error));
-  // }
+  try {
+    const response = yield call(createDiagnozeApi, action.payload);
+    yield put(createDiagnozeSuccess(response));
+  } catch (error) {
+    yield put(createDiagnozeFailure(error));
+  }
 }
 
 function* updateDiagnozeSaga(action) {
@@ -193,12 +193,13 @@ function* fetchFindingsByIdsSaga(action) {
 }
 
 function* createFindingSaga(action) {
-  // try {
-  //   const response = yield call(createFindingApi, action.payload);
-  //   yield put(createFindingSuccess(response));
-  // } catch (error) {
-  //   yield put(createFindingFailure(error));
-  // }
+  try {
+    console.log('saga', action);
+    const response = yield call(createFindingApi, action.payload);
+    yield put(createFindingSuccess(response));
+  } catch (error) {
+    yield put(createFindingFailure(error));
+  }
 }
 
 function* deleteFindingSaga(action) {
@@ -229,21 +230,21 @@ function* fetchLabsByIdsSaga(action) {
 }
 
 function* createLabSaga(action) {
-  // try {
-  //   const response = yield call(createLabApi, action.payload);
-  //   yield put(createLabSuccess(response));
-  // } catch (error) {
-  //   yield put(createLabFailure(error));
-  // }
+  try {
+    const response = yield call(createLabApi, action.payload);
+    yield put(createLabSuccess(response));
+  } catch (error) {
+    yield put(createLabFailure(error));
+  }
 }
 
 function* deleteLabSaga(action) {
-  // try {
-  //   yield call(deleteLabApi, action.payload);
-  //   yield put(deleteLabSuccess(action.payload));
-  // } catch (error) {
-  //   yield put(deleteLabFailure(error));
-  // }
+  try {
+    yield call(deleteLabApi, action.payload);
+    yield put(deleteLabSuccess(action.payload));
+  } catch (error) {
+    yield put(deleteLabFailure(error));
+  }
 }
 
 export function* watchCatalogSaga() {

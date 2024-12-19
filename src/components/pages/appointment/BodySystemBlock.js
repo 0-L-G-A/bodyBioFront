@@ -1,20 +1,24 @@
 import { useState } from 'react';
 import {
   FaPlus,
-  FaEdit,
+  // FaEdit,
   FaStickyNote,
   FaChevronDown,
   FaChevronUp,
 } from 'react-icons/fa';
+// import { MdCreateNewFolder } from 'react-icons/md';
 import CollapsibleBodySystemSubBlock from './BodySystemSubBlock';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBodySystem } from 'store/actions/catalog';
 import { CATALOG_TYPE } from 'components/types/CatalogType';
+import { createPortal } from 'react-dom';
+import Modal from './addElementModal';
 
 const CollapsibleBodySystemBlock = ({ nameKey }) => {
   const catalogState = useSelector((state) => state.catalog);
   const dispatch = useDispatch();
   const bodySystem = catalogState[nameKey];
+
   const {
     id,
     name,
@@ -25,17 +29,30 @@ const CollapsibleBodySystemBlock = ({ nameKey }) => {
   } = bodySystem;
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   const toggleOpen = () => {
     dispatch(fetchBodySystem(id));
     setIsOpen(!isOpen);
   };
 
+  // const addAppointment = () => {}
+
   return (
     <div
       className={`border border-lightTheme-darkSeaWave rounded-md shadow-custom p-4 mb-4 transition-max-h duration-500 ease-in-out ${isOpen ? 'max-h-[1000px] overflow-visible' : 'max-h-[60px] overflow-hidden'}`}
     >
       <div className="flex items-center justify-between">
+        {isModalOpen &&
+          createPortal(
+            <Modal
+              isOpen={isModalOpen}
+              onClose={toggleModal}
+              bodySystem={bodySystem}
+            />,
+            document.getElementById('modal-root'),
+          )}
         <div className="flex items-center">
           <button
             onClick={toggleOpen}
@@ -49,17 +66,25 @@ const CollapsibleBodySystemBlock = ({ nameKey }) => {
         </div>
         <div className="flex space-x-4 text-lightTheme-darkSeaWave">
           <button
+            onClick={toggleModal}
             className="p-2 rounded-full hover:bg-lightTheme-lightBlue focus:outline-none"
             title="Add item"
           >
             <FaPlus />
           </button>
-          <button
+          {/* <button
+            onClick={addAppointment}
+            className="p-2 rounded-full hover:bg-lightTheme-lightBlue focus:outline-none"
+            title="Add appointment"
+          >
+            <MdCreateNewFolder />
+          </button> */}
+          {/* <button
             className="p-2 rounded-full hover:bg-lightTheme-lightBlue focus:outline-none"
             title="Edit"
           >
             <FaEdit />
-          </button>
+          </button> */}
           <button
             className="p-2 rounded-full hover:bg-lightTheme-lightBlue focus:outline-none"
             title="Note"
@@ -82,60 +107,27 @@ const CollapsibleBodySystemBlock = ({ nameKey }) => {
           ) : (
             <p className="text-lightTheme-darkSecondaryText">Немає лікарів</p>
           )}
-          {Boolean(diagnozes?.length) && (
-            <>
-              <h3 className="text-md font-semibold text-lightTheme-darkMainText">
-                Діагнози:
-              </h3>
-              {diagnozes?.map(
-                (diagnoze) =>
-                  Boolean(diagnoze.level === 1) && (
-                    <CollapsibleBodySystemSubBlock
-                      item={diagnoze}
-                      id={diagnoze.id}
-                      type={CATALOG_TYPE.DIAGNOZE}
-                      bodySystem={bodySystem}
-                    />
-                  ),
-              )}
-            </>
-          )}
-          {Boolean(laboratories?.length) && (
-            <>
-              <h3 className="text-md font-semibold text-lightTheme-darkMainText">
-                Лабораторні дослідження:
-              </h3>
-              {laboratories?.map(
-                (lab) =>
-                  Boolean(lab.level === 1) && (
-                    <CollapsibleBodySystemSubBlock
-                      item={lab}
-                      id={lab.id}
-                      type={CATALOG_TYPE.LAB}
-                      bodySystem={bodySystem}
-                    />
-                  ),
-              )}
-            </>
-          )}
-          {Boolean(findings?.length) && (
-            <>
-              <h3 className="text-md font-semibold text-lightTheme-darkMainText">
-                Симптоми:
-              </h3>
-              {findings?.map(
-                (fin) =>
-                  Boolean(fin.level === 1) && (
-                    <CollapsibleBodySystemSubBlock
-                      item={fin}
-                      id={fin.id}
-                      type={CATALOG_TYPE.FINDING}
-                      bodySystem={bodySystem}
-                    />
-                  ),
-              )}
-            </>
-          )}
+          {
+            <CollapsibleBodySystemSubBlock
+              items={diagnozes}
+              type={CATALOG_TYPE.DIAGNOZE}
+              bodySystem={bodySystem}
+            />
+          }
+          {
+            <CollapsibleBodySystemSubBlock
+              items={laboratories}
+              type={CATALOG_TYPE.LAB}
+              bodySystem={bodySystem}
+            />
+          }
+          {
+            <CollapsibleBodySystemSubBlock
+              items={findings}
+              type={CATALOG_TYPE.FINDING}
+              bodySystem={bodySystem}
+            />
+          }
         </div>
       )}
     </div>
