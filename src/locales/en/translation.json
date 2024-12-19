@@ -1,36 +1,36 @@
 {
   "NAVIGATION": {
-    "signUp": "Sign Up",
-    "logIn": "Log In",
-    "home": "Home",
-    "appointment": "Appointment",
-    "myMedicalHistory": "My medical history"
+    "signUp": "Реєстрація",
+    "logIn": "Вхід",
+    "home": "Домашня сторінка",
+    "appointment": "Прийом лікаря",
+    "myMedicalHistory": "Моя медична історія"
   },
   "COMMON": {
     "bodyBio": "Body Bio",
-    "name": "Name",
-    "surname": "Surname",
-    "email": "Email",
-    "password": "Password",
-    "contactNumber": "Contact number",
-    "insuranceId": "Insurance number",
-    "isAlive": "Is Alive",
-    "role": "Role",
-    "sex": "Sex",
-    "language": "Language",
-    "edit": "Edit",
-    "save": "Save",
-    "doctors": "Doctors",
-    "trustPersons": "Trust persons",
-    "admins": "Admins",
-    "patients": "Patients"
+    "name": "Імя",
+    "surname": "Прізвище",
+    "email": "Електронна пошта",
+    "password": "Пароль",
+    "contactNumber": "Контактний номер",
+    "insuranceId": "Номер страхової",
+    "isAlive": "Чи живий",
+    "role": "Роль",
+    "sex": "Стать",
+    "language": "Мова",
+    "edit": "Редагувати",
+    "save": "Зберегти",
+    "doctors": "Лікарі",
+    "trustPersons": "Довірені особи",
+    "admins": "Адміни",
+    "patients": "Пацієнти"
   },
   "LOGIN": {
-    "create": "Create",
-    "repeat": "Repeat",
-    "enterYour": "Enter your",
-    "fieldIsRequired": "Field is required",
-    "lengthShouldBeLonger": "Length should be longer than",
-    "selectYourRole": "Select your user role"
+    "create": "Створіть",
+    "repeat": "Повторіть",
+    "enterYour": "Введіть ваш",
+    "fieldIsRequired": "Поле є обовязковим",
+    "lengthShouldBeLonger": "Довжина повинна бути довше чим",
+    "selectYourRole": "Виберіть роль користувача"
   }
 }

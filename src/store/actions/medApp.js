@@ -18,3 +18,41 @@ export const fetchUsersAppointmentsFailure = createAction(
     payload: error,
   }),
 );
+
+export const addUsersAppointment = createAction(
+  'medApp/addUsersAppointment',
+  (appointmentData) => ({ payload: appointmentData }),
+);
+
+export const addUsersAppointmentSuccess = createAction(
+  'medApp/addUsersAppointmentSuccess',
+  (appointmentData) => ({
+    payload: appointmentData,
+  }),
+);
+
+export const addUsersAppointmentFailure = createAction(
+  'medApp/addUsersAppointmentFailure',
+  (error) => ({
+    payload: error,
+  }),
+);
+
+export const addUsersDiagnosis = createAction(
+  'medApp/addUsersDiagnosis',
+  (appointmentData) => ({ payload: appointmentData }),
+);
+
+export const addUsersDiagnosisSuccess = createAction(
+  'medApp/addUsersDiagnosisSuccess',
+  (appointmentData) => ({
+    payload: appointmentData,
+  }),
+);
+
+export const addUsersDiagnosisFailure = createAction(
+  'medApp/addUsersDiagnosisFailure',
+  (error) => ({
+    payload: error,
+  }),
+);

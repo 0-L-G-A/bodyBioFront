@@ -56,12 +56,12 @@ export const fetchDiagnozesApi = async () => {
 };
 
 export const createDiagnozeApi = async (data) => {
-  // const url = BODY_BIO_API_URL + 'diagnozes';
-  // const req = await request(url, {
-  //   method: REGUEST_METHODS.POST,
-  //   body: JSON.stringify(data),
-  // });
-  // return req;
+  const url = BODY_BIO_API_URL + 'diagnozes';
+  const req = await request(url, {
+    method: REGUEST_METHODS.POST,
+    data,
+  });
+  return req;
 };
 
 export const updateDiagnozeApi = async (id, data) => {
@@ -97,12 +97,13 @@ export const fetchFindingsByIdsApi = async (ids) => {
 };
 
 export const createFindingApi = async (data) => {
-  // const url = BODY_BIO_API_URL + 'findings';
-  // const req = await request(url, {
-  //   method: REGUEST_METHODS.POST,
-  //   body: JSON.stringify(data),
-  // });
-  // return req;
+  console.log('api', data);
+  const url = BODY_BIO_API_URL + 'findings';
+  const req = await request(url, {
+    method: REGUEST_METHODS.POST,
+    data,
+  });
+  return req;
 };
 
 export const deleteFindingApi = async (id) => {
@@ -131,18 +132,18 @@ export const fetchLabsByIdsApi = async (ids) => {
 };
 
 export const createLabApi = async (data) => {
-  // const url = BODY_BIO_API_URL + 'labs';
-  // const req = await request(url, {
-  //   method: REGUEST_METHODS.POST,
-  //   body: JSON.stringify(data),
-  // });
-  // return req;
+  const url = BODY_BIO_API_URL + 'labs';
+  const req = await request(url, {
+    method: REGUEST_METHODS.POST,
+    data,
+  });
+  return req;
 };
 
 export const deleteLabApi = async (id) => {
-  // const url = `${BODY_BIO_API_URL}labs/${id}`;
-  // const req = await request(url, {
-  //   method: REGUEST_METHODS.DELETE,
-  // });
-  // return req;
+  const url = `${BODY_BIO_API_URL}labs/${id}`;
+  const req = await request(url, {
+    method: REGUEST_METHODS.DELETE,
+  });
+  return req;
 };

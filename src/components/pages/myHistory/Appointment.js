@@ -35,7 +35,7 @@ const MedAppointment = ({ appointment }) => {
           </h4>
           <ul className="list-disc pl-4 text-lightTheme-darkSecondaryText text-sm">
             {usedBodySystems.map((systemId) => (
-              <li key={systemId}>{bodySystemsObj[systemId]?.nameKey}</li>
+              <li key={systemId}>{bodySystemsObj[systemId]?.name}</li>
             ))}
           </ul>
         </div>
